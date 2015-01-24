@@ -14,6 +14,11 @@ int get_current_scores()
 	return scores; 
 }
 
+void set_current_scores(int s)
+{
+	scores = s;
+}
+
 /*
 draw the game grid example:
 
