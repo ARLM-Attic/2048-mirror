@@ -95,39 +95,70 @@ void generate_random_tile()
 //Return 1 if any movement occurs 0 if no movement occured and -1 no movement can occur
 int move(char direction)
 {
+	int moved = 0;
 	//Implement code here
+
 	switch (direction)
 	{
 		case UP1:
 		case UP2:
-			//Moving Upward
+
 			for (int i = 1; i <= 4; i++)
-			{
 				for (int j = 1; j <= 4; j++)
-				{
+					while (move_tile(direction, i, j))
+					{
+						moved++;
+						j = 1;
+					}
 
-				}
-			}
 			break;
-
 		case DOWN1:
 		case DOWN2:
 
-			break;
+			for (int i = 1; i <= 4; i++)
+				for (int j = 4; j >= 1; j--)
+					while (move_tile(direction, i, j))
+					{
+						moved++;
+						j = 4;
+					}
 
+			break;
 		case LEFT1:
 		case LEFT2:
 
-			break;
+			for (int j = 1; j <= 4; j++)
+				for (int i = 1; i <= 4; i++)
+					while (move_tile(direction, i, j))
+					{
+						moved++;
+						i = 1;
+					}
 
+			break;
 		case RIGHT1:
 		case RIGHT2:
-			
-			break;
 
+			for (int j = 1; j <= 4; j++)
+				for (int i = 4; i >= 1; i--)
+					while (move_tile(direction, i, j))
+					{
+						moved++;
+						i = 4;
+					}
+
+
+			break;
 		default:
-			return 0;
+			break;
 	}
+
+	if (moved == 0)
+		return 0;
+	else
+		return 1;
+
+	//No movement occur checker
 	return -1;
 
 }
@@ -143,6 +174,15 @@ int has_won()
 	return 0;
 }
 
+int has_lost()
+{
+	for (int j = 1; j <= 4; j++)
+		for (int i = 1; i <= 4; i++)
+			if (get(i, j) == 0)
+				return 0;
+	return 1;
+}
+
 //Return 0 if done
 //Retrun -1 if game over
 //Return 1 if game won
@@ -150,18 +190,142 @@ int has_won()
 int update_grid(char input)
 {
 	//Implement code here
-	generate_random_tile();
+	
 
-	int out;
-	do{
-		out = move(input);
-	} while (out == 0);
+	int out = move(input);
 
 	if (out == -1)
 		if (!has_won())
 			return -1;
 	if (has_won())
 		return 1;
+
+	if (has_lost())
+		return -1;
+
+	generate_random_tile();
+
 	//delete this line at the end
+	return 0;
+}
+
+
+//Move a single tile return 1 if done else 0
+
+int move_tile(char dir, int i, int j)
+{
+	int pre, cur;
+	//Implement code here
+	switch (dir)
+	{
+		case UP1:
+		case UP2:
+
+			if (j == 1)
+				return 0;
+
+			pre = get(i, j - 1);
+			cur = get(i, j);
+
+			if (cur != 0)
+			{
+				if (pre == 0)
+				{
+					set(i, j - 1, cur);
+					set(i, j, 0);
+					return 1;
+				}
+				if (pre == cur)
+				{
+					set(i, j - 1, 2 * cur);
+					set(i, j, 0);
+					set_current_scores(get_current_scores() + 2 * cur);
+					return 1;
+				}
+			}
+			break;
+
+		case DOWN1:
+		case DOWN2:
+
+			if (j == 4)
+				return 0;
+
+			pre = get(i, j + 1);
+			cur = get(i, j);
+
+			if (cur != 0)
+			{
+				if (pre == 0)
+				{
+					set(i, j + 1, cur);
+					set(i, j, 0);
+					return 1;
+				} 
+				if (pre == cur)
+				{
+					set(i, j + 1, 2 * cur);
+					set(i, j, 0);
+					set_current_scores(get_current_scores() + 2 * cur);
+					return 1;
+				}
+			}
+			break;
+
+		case LEFT1:
+		case LEFT2:
+
+			if (i == 1)
+				return 0;
+
+			pre = get(i - 1, j);
+			cur = get(i, j);
+
+			if (cur != 0)
+			{
+				if (pre == 0)
+				{
+					set(i - 1, j, cur);
+					set(i, j, 0);
+					return 1;
+				} 
+				if (pre == cur)
+				{
+					set(i - 1, j, 2 * cur);
+					set(i, j, 0);
+					set_current_scores(get_current_scores() + 2 * cur);
+					return 1;
+				}
+			}
+			break;
+
+		case RIGHT1:
+		case RIGHT2:
+
+			if (i == 4)
+				return 0;
+
+			pre = get(i + 1, j);
+			cur = get(i, j);
+
+			if (cur != 0)
+			{
+				if (pre == 0)
+				{
+					set(i + 1, j, cur);
+					set(i, j, 0);
+					return 1;
+				} 
+				if (pre == cur)
+				{
+					set(i + 1, j, 2 * cur);
+					set(i, j, 0);
+					set_current_scores(get_current_scores() + 2 * cur);
+					return 1;
+				}
+			}
+			break;
+
+	}
 	return 0;
 }
