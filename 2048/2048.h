@@ -128,3 +128,6 @@ void generate_random_tile();
 
 //return 1 if player has won else 0
 int has_won();
+
+//return 1 if moved
+int move_tile(char dir, int i, int j);

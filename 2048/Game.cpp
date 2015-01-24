@@ -100,7 +100,14 @@ int move(char direction)
 	{
 		case UP1:
 		case UP2:
+			//Moving Upward
+			for (int i = 1; i <= 4; i++)
+			{
+				for (int j = 1; j <= 4; j++)
+				{
 
+				}
+			}
 			break;
 
 		case DOWN1:
