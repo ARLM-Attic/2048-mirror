@@ -28,10 +28,13 @@ Description:Provides Basic for Building 2048 Game
 #define XMAX 4
 //Maximum Y value of table
 #define YMAX 4
+
 //Left Key
-#define LEFT 37
+#define LEFT1 'a'
+#define LEFT2 'A'
 //Right Key
-#define RIGHT 39
+#define RIGHT1 'd'
+#define RIGHT2 'D'
 //Up KeyS
 //Up Key 1
 #define UP1 'w' 
@@ -114,14 +117,14 @@ int update_grid(char input);
 //Game mode
 void game_mode();
 
-//Check weather blocks can move or not
-int can_move(char direction);
-
 //move blocks in specific direction
-void move(char direction);
+int move(char direction);
 
 //Returns current scores
 int get_current_scores();
 
 //Generate random tile 
 void generate_random_tile();
+
+//return 1 if player has won else 0
+int has_won();

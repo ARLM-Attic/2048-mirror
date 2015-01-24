@@ -94,7 +94,7 @@ void game_mode()
 	{ 
 		system("cls");
 		draw_grid();
-		printf("\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
+		printf("\nPressy any key to start game\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
 		if (result != 0)
 			printf("\n\nYou have %s the game\nPress any key to continue...\n\n", result == 1 ? "won" : "lost");
 		input = _getch();
