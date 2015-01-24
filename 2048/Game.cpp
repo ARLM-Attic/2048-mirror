@@ -108,7 +108,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						j = 1;
+						j--;
 					}
 
 			break;
@@ -120,7 +120,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						j = 4;
+						j++;
 					}
 
 			break;
@@ -132,7 +132,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						i = 1;
+						i--;
 					}
 
 			break;
@@ -144,7 +144,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						i = 4;
+						i++;
 					}
 
 

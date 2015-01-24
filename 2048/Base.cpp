@@ -98,6 +98,9 @@ void game_mode()
 		if (result != 0)
 			printf("\n\nYou have %s the game\nPress any key to continue...\n\n", result == 1 ? "won" : "lost");
 
+		if (result == -1)
+			set_current_scores(0);
+
 		printf("\n\nYour Current Scores: %d", get_current_scores());
 		printf("\nHigh Scores Scores: %d", get_high_scores());
 

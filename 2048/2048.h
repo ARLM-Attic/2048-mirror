@@ -123,6 +123,9 @@ int move(char direction);
 //Returns current scores
 int get_current_scores();
 
+//Set current scores
+void set_current_scores(int s);
+
 //Generate random tile 
 void generate_random_tile();
 
