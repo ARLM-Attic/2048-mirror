@@ -4,6 +4,7 @@ this file contains Functions to be implemented
 */
 
 #include <stdio.h>
+#include <time.h>
 #include "2048.h"
 
 //the score variable to be set if scores added
@@ -60,6 +61,7 @@ void draw_grid()
 		}
 		printf("|\n");
 	}
+
 	printf("|-----|-----|-----|-----|\n");
 
 }
@@ -69,6 +71,15 @@ void draw_grid()
 void generate_random_tile()
 {
 
+	srand(time(NULL));
+	int v, i, j, t;
+	do{
+		i = rand() % 4 + 1;
+		j = rand() % 4 + 1;
+		v = get(i, j);
+	} while (v == 0);
+	t = (rand() % 2 + 1) * 2;
+	set(i, j, t);
 } 
 
 //Check if we can move blocks or not 1 for true and 0 for false
@@ -76,8 +87,6 @@ void generate_random_tile()
 int can_move()
 {
 	//Implement code here
-
-
 
 	//delete this line at the end
 	return 0;
