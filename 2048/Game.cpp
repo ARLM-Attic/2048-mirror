@@ -84,7 +84,7 @@ void generate_random_tile()
 
 //Check if we can move blocks or not 1 for true and 0 for false
 
-int can_move()
+int can_move(char direction)
 {
 	//Implement code here
 

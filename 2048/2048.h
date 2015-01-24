@@ -115,7 +115,7 @@ int update_grid(char input);
 void game_mode();
 
 //Check weather blocks can move or not
-int can_move();
+int can_move(char direction);
 
 //move blocks in specific direction
 void move(char direction);
