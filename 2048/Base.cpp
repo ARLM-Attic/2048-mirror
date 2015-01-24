@@ -97,6 +97,10 @@ void game_mode()
 		printf("\nPressy any key to start game\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
 		if (result != 0)
 			printf("\n\nYou have %s the game\nPress any key to continue...\n\n", result == 1 ? "won" : "lost");
+
+		printf("\n\nYour Current Scores: %d", get_current_scores());
+		printf("\nHigh Scores Scores: %d", get_high_scores());
+
 		input = _getch();
 		//Game over / won
 		if (result == -1 || result == 1)
