@@ -3,6 +3,8 @@
 this file contains Functions to be implemented
 */
 
+#include <stdio.h>
+#include "2048.h"
 
 //the score variable to be set if scores added
 int scores = 0;
@@ -34,7 +36,31 @@ void draw_grid()
 {
 	//Implement code here
 
+	printf("|-----|-----|-----|-----|\n");
+	for (int j = 1; j <= 4; j++)
+	{
+		for (int i = 1; i <= 4; i++)
+		{
+			int v = get(i, j);
+			if (v == 0)
+				printf("|     ");
 
+			if (v >= 2 && v <= 8)
+				printf("|%d    ", v);
+
+			if (v >= 16 && v <= 64)
+				printf("|%d   ", v);
+
+			if (v >= 128 && v <= 512)
+				printf("|%d  ", v);
+
+			if (v >= 1024 && v <= 8192)
+				printf("|%d ", v);
+
+		}
+		printf("|\n");
+	}
+	printf("|-----|-----|-----|-----|\n");
 
 }
 
