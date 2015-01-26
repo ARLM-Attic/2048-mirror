@@ -102,11 +102,7 @@ void draw_instructions();
 //Print Highest scores
 void draw_scores();
 
-//Saves game state in file
-void save_game_state();
 
-//loads game state from file
-void load_game_state();
 
 //Draw game grid
 void draw_grid();
