@@ -92,7 +92,7 @@ void generate_random_tile()
 //set(i,j,value) to set (i,j)th element to value
 //where (1,1)<=(i,j)<=(4,4)
 
-//Return 1 if any movement occurs 0 if no movement occured and -1 no movement can occur
+//Return 1 if any movement occurs 0 if no movement occured
 int move(char direction)
 {
 	int moved = 0;
@@ -107,8 +107,8 @@ int move(char direction)
 				for (int j = 1; j <= 4; j++)
 					while (move_tile(direction, i, j))
 					{
-						moved++;
-						j--;
+						moved++; 
+						j--; 
 					}
 
 			break;

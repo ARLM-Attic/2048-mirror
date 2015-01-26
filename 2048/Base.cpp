@@ -21,7 +21,7 @@ void clear_table()
 }
 
 /*
-Gets the number in table at given position
+Gets the number in table at given position or returns -1 if error
 i: Horizontal or x component
 j: Vertical or y component
 */
@@ -55,7 +55,7 @@ int is_paused()
 void load_scores()
 {
 	FILE* f;
-	f = fopen(score_file, "r");
+	f = fopen(score_file, "r+");
 	if (!(f == NULL))
 	{
 		fscanf_s(f, "%d", &high_scores);
@@ -67,7 +67,7 @@ void load_scores()
 void save_scores()
 {
 	FILE* f;
-	f = fopen(score_file, "w");
+	f = fopen(score_file, "w+");
 	if (!(f == NULL))
 	{
 		fprintf(f, "%d", high_scores);
@@ -90,11 +90,15 @@ void game_mode()
 	char input;
 
 	int result = 0;
+
 	do
 	{ 
 		system("cls");
+
 		draw_grid();
+
 		printf("\nPressy any key to start game\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
+
 		if (result != 0)
 			printf("\n\nYou have %s the game\nPress any key to continue...\n\n", result == 1 ? "won" : "lost");
 

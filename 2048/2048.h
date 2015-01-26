@@ -130,3 +130,6 @@ int has_won();
 
 //return 1 if moved
 int move_tile(char dir, int i, int j);
+
+//Returns 1 if lost else 0
+int has_lost();
