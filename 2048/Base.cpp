@@ -91,19 +91,21 @@ void game_mode()
 
 	int result = 0;
 
+	if (!haspaused)
+		generate_random_tile();
+
 	do
 	{ 
 		system("cls");
 
 		draw_grid();
 
-		printf("\nPressy any key to start game\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
+		printf("\nPress 'A' 'S' 'W' 'D' to move blocks\nPress escape to pause game");
 
 		if (result != 0)
 			printf("\n\nYou have %s the game\nPress any key to continue...\n\n", result == 1 ? "won" : "lost");
 
-		if (result == -1)
-			set_current_scores(0);
+			
 
 		printf("\n\nYour Current Scores: %d", get_current_scores());
 		printf("\nHigh Scores Scores: %d", get_high_scores());
@@ -117,6 +119,9 @@ void game_mode()
 
 	if (get_current_scores() > get_high_scores())
 		set_high_scores(get_current_scores());
+
+	if (result == -1)
+		set_current_scores(0);
 
 	if (result == 0){
 		haspaused = true;

@@ -108,7 +108,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++; 
-						j--; 
+						j = 1;
 					}
 
 			break;
@@ -120,7 +120,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						j++;
+						j = 4;
 					}
 
 			break;
@@ -132,7 +132,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						i--;
+						i = 1;
 					}
 
 			break;
@@ -144,7 +144,7 @@ int move(char direction)
 					while (move_tile(direction, i, j))
 					{
 						moved++;
-						i++;
+						i = 4;
 					}
 
 
@@ -194,16 +194,15 @@ int update_grid(char input)
 
 	int out = move(input);
 
-	if (out == -1)
-		if (!has_won())
-			return -1;
 	if (has_won())
 		return 1;
 
 	if (has_lost())
 		return -1;
 
-	generate_random_tile();
+
+	if (out != 0)
+		generate_random_tile();
 
 	//delete this line at the end
 	return 0;

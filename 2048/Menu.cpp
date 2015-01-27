@@ -32,6 +32,9 @@ void draw_menu()
 	//Draw Game copyright info
 	printf("(c) All Rights Reserved\n\n");
 
+	if (!is_paused())
+		selid = 1;
+
 	//Draw menu
 
 	for (int i = 0; i < 5; i++){
