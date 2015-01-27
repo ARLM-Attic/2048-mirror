@@ -52,7 +52,7 @@ void draw_menu()
 			if (is_paused())
 				printf("Continue");
 			else
-				selid = 1;
+				if (selid == 0) selid = 1;
 
 			break;
 
