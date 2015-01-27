@@ -32,9 +32,6 @@ void draw_menu()
 	//Draw Game copyright info
 	printf("(c) All Rights Reserved\n\n");
 
-	if (!is_paused())
-		selid = 1;
-
 	//Draw menu
 
 	for (int i = 0; i < 5; i++){
@@ -54,6 +51,8 @@ void draw_menu()
 		case 0:		//If Not paused then print Continue
 			if (is_paused())
 				printf("Continue");
+			else
+				selid = 1;
 
 			break;
 
